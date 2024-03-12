@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    title Product
+    style.
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        }
+
+        .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+        text-align: center;
+        }
+
+        form {
+        margin-bottom: 20px;
+        display: flex
+        }
+
+        input[type="text"] {
+        width: calc(100% - 80px);
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+        background-color: #0056b3;
+        }
+
+        ul {
+        list-style: none;
+        padding: 0;
+        }
+
+        li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        }
+
+        li span {
+        flex-grow: 1;
+        font-size: 32px;
+        margin-top: 10px;
+        }
+
+        li form {
+        margin-left: 10px;
+        }
+  body
+    div.container
+      h1 Sản Phẩm
+      form(action='/add' method='post')
+        input(type='text', name='product', placeholder='Vui lòng nhập tên sản phẩm')
+        button(type='submit') Thêm
+
+      ul
+        each product, index in products
+          li
+            span= product
+            form(action='/delete' method='post')
+              input(type='hidden', name='index', value=index)
+              button(type='submit') Xoá
+            form(action='/update' method='post')
+              input(type='hidden', name='index', value=index)
+              input(type='text', name='product', value=product)
+              button(type='submit') Cật nhật
